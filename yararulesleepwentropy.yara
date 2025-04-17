@@ -7,5 +7,5 @@ rule imports_sleep_entropyabove
         author = "Alida Oevermo-Mortensen"
         date = "2025-04-07"
     condition:
-        pe.imports("kernel32.dll", "Sleep") and not pe.is_dll() and math.entropy(0, filesize) >= 6.8
+        pe.imports("kernel32.dll", "Sleep") and pe.imports("kernel32.dll", "WaitForMultipleObjects") and pe.imports("kernel32.dll", "WaitForSingleObject") and not pe.is_dll() and math.entropy(0, filesize) >= 6.8
 } 
